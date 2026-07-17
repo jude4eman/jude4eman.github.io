@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corner Listing Co. — Cincinnati Google Business Profile Repair</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #EFEBE1;
+    --paper-dim: #E4DFD2;
+    --ink: #202A24;
+    --steel: #3D5A73;
+    --signal: #E2A13B;
+    --alert: #B6432B;
+    --mist: #C8CFC7;
+    --white: #FCFAF5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Lora', serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .display {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 1.05;
+  }
+
+  .mono {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- HEADER ---------- */
+  header {
+    padding: 24px 0;
+    border-bottom: 2px solid var(--ink);
+  }
+  header .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .logo span { color: var(--alert); }
+  nav a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    margin-left: 28px;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  nav a:hover { border-color: var(--ink); }
+  nav { display: flex; }
+  @media (max-width: 640px) { nav { display: none; } }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    padding: 64px 0 40px;
+  }
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--steel);
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: clamp(2.1rem, 5vw, 3.6rem);
+    max-width: 760px;
+    margin-bottom: 20px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--alert);
+  }
+  .hero p.lede {
+    font-size: 1.1rem;
+    max-width: 540px;
+    color: #45524A;
+    margin-bottom: 32px;
+  }
+  .cta-row { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block;
+    padding: 14px 26px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    border: 2px solid var(--ink);
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .btn-solid {
+    background: var(--ink);
+    color: var(--white);
+  }
+  .btn-solid:hover { transform: translateY(-2px); background: #14201A; }
+  .btn-outline {
+    background: transparent;
+    color: var(--ink);
+  }
+  .btn-outline:hover { transform: translateY(-2px); background: var(--paper-dim); }
+
+  /* ---------- TICKET COMPARISON ---------- */
+  .tickets {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin: 56px 0 20px;
+  }
+  @media (max-width: 720px) { .tickets { grid-template-columns: 1fr; } }
+
+  .ticket {
+    background: var(--white);
+    border: 1.5px solid var(--ink);
+    position: relative;
+    padding: 22px 22px 26px;
+  }
+  .ticket::before {
+    content: attr(data-tag);
+    position: absolute;
+    top: -13px;
+    left: 20px;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    padding: 4px 10px;
+    text-transform: uppercase;
+  }
+  .ticket.before::before { background: var(--alert); }
+  .ticket.after::before { background: var(--steel); }
+
+  .biz-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.15rem;
+    text-transform: none;
+    margin: 10px 0 4px;
+  }
+  .biz-meta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: #6b7268;
+    margin-bottom: 12px;
+  }
+  .stars { font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 10px; }
+  .before .stars { color: var(--mist); }
+  .after .stars { color: var(--signal); }
+
+  .photo-row { display: flex; gap: 6px; margin: 12px 0; }
+  .photo-row div {
+    width: 44px; height: 44px;
+    border: 1px dashed var(--mist);
+  }
+  .before .photo-row div { background: repeating-linear-gradient(45deg, #f0eee6, #f0eee6 4px, #e6e3d8 4px, #e6e3d8 8px); }
+  .after .photo-row div { background: var(--steel); opacity: 0.75; }
+  .after .photo-row div:nth-child(2) { background: var(--signal); opacity: 0.85; }
+  .after .photo-row div:nth-child(3) { background: var(--alert); opacity: 0.7; }
+
+  .ticket-note {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: #6b7268;
+    border-top: 1px dashed var(--mist);
+    padding-top: 10px;
+    margin-top: 10px;
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section { padding: 64px 0; border-top: 2px solid var(--ink); }
+  .section-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--steel);
+    margin-bottom: 10px;
+  }
+  .section h2 {
+    font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+    max-width: 620px;
+    margin-bottom: 40px;
+  }
+
+  /* ---------- SCOPE OF WORK ---------- */
+  .scope-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1.5px solid var(--ink);
+  }
+  @media (max-width: 800px) { .scope-grid { grid-template-columns: 1fr; } }
+  .scope-item {
+    padding: 28px 24px;
+    border-right: 1.5px solid var(--ink);
+  }
+  .scope-item:last-child { border-right: none; }
+  @media (max-width: 800px) {
+    .scope-item { border-right: none; border-bottom: 1.5px solid var(--ink); }
+    .scope-item:last-child { border-bottom: none; }
+  }
+  .scope-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--alert);
+    margin-bottom: 14px;
+  }
+  .scope-item h3 {
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+  }
+  .scope-item p { font-size: 0.92rem; color: #45524A; }
+
+  /* ---------- RATE CARD ---------- */
+  .rate-card {
+    background: var(--white);
+    border: 1.5px solid var(--ink);
+    padding: 8px;
+  }
+  .rate-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 20px 20px;
+    border-bottom: 1px dashed var(--mist);
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .rate-row:last-child { border-bottom: none; }
+  .rate-label h4 {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    font-size: 1rem;
+    margin-bottom: 4px;
+  }
+  .rate-label p { font-size: 0.88rem; color: #6b7268; max-width: 380px; }
+  .rate-price {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1.3rem;
+    white-space: nowrap;
+  }
+  .rate-price span { font-size: 0.7rem; color: #6b7268; display: block; text-align: right; }
+
+  /* ---------- WHO ITS FOR ---------- */
+  .who-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .who-chip {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.82rem;
+    border: 1.5px solid var(--ink);
+    padding: 8px 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact-box {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 48px 40px;
+  }
+  .contact-box h2 { color: var(--white); margin-bottom: 14px; }
+  .contact-box p.lede { color: var(--mist); margin-bottom: 32px; max-width: 480px; }
+
+  form { display: grid; gap: 14px; max-width: 480px; }
+  form label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--mist);
+    display: block;
+    margin-bottom: 6px;
+  }
+  form input, form textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1.5px solid var(--mist);
+    color: var(--white);
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    padding: 8px 2px;
+  }
+  form input:focus, form textarea:focus {
+    outline: none;
+    border-color: var(--signal);
+  }
+  form textarea { resize: vertical; min-height: 70px; }
+  .contact-box .btn-solid {
+    background: var(--signal);
+    border-color: var(--signal);
+    color: var(--ink);
+    width: fit-content;
+    margin-top: 8px;
+  }
+  .contact-box .btn-solid:hover { background: #EDB35C; }
+
+  footer {
+    padding: 30px 0 50px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: #6b7268;
+    text-align: center;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="logo">Corner<span>·</span>Listing Co.</div>
+    <nav>
+      <a href="#scope">The Fix</a>
+      <a href="#rates">Rates</a>
+      <a href="#contact">Book a Check</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Cincinnati &amp; Greater Ohio Valley</div>
+    <h1>Your customers find you on Google <em>before</em> they find your website.</h1>
+    <p class="lede">Most local businesses haven't touched their Google Business Profile since the day it was created. That's the listing showing up when someone searches "plumber near me" at 9pm. We rebuild it, then keep it working.</p>
+    <div class="cta-row">
+      <a href="#contact" class="btn btn-solid">Book a Free Listing Check</a>
+      <a href="#scope" class="btn btn-outline">See What's Included</a>
+    </div>
+
+    <div class="tickets">
+      <div class="ticket before" data-tag="Before — Typical Listing">
+        <div class="biz-meta">GOOGLE BUSINESS PROFILE</div>
+        <div class="biz-name">Miller &amp; Sons Plumbing</div>
+        <div class="stars">★★★☆☆</div>
+        <div class="biz-meta">12 reviews · last updated 2021 · hours unconfirmed</div>
+        <div class="photo-row"><div></div><div></div><div></div></div>
+        <div class="ticket-note">No description. No posts. No response to reviews.</div>
+      </div>
+      <div class="ticket after" data-tag="After — Rebuilt">
+        <div class="biz-meta">GOOGLE BUSINESS PROFILE</div>
+        <div class="biz-name">Miller &amp; Sons Plumbing</div>
+        <div class="stars">★★★★★</div>
+        <div class="biz-meta">12 reviews (replied to all) · updated weekly · hours current</div>
+        <div class="photo-row"><div></div><div></div><div></div></div>
+        <div class="ticket-note">Service list, service area, monthly posts, review replies.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="scope">
+  <div class="wrap">
+    <div class="section-eyebrow">Scope of Work</div>
+    <h2>Three steps. No contracts you can't cancel, no jargon.</h2>
+    <div class="scope-grid">
+      <div class="scope-item">
+        <div class="scope-num">01 — Diagnosis</div>
+        <h3>Free listing check</h3>
+        <p>We pull up your current listing next to your two closest competitors and show you exactly what's missing — in person or over a five-minute call.</p>
+      </div>
+      <div class="scope-item">
+        <div class="scope-num">02 — Rebuild</div>
+        <h3>Full profile overhaul</h3>
+        <p>Service list, service area, business description, photos, opening posts, and a plan for your existing reviews. Done within a week.</p>
+      </div>
+      <div class="scope-item">
+        <div class="scope-num">03 — Upkeep</div>
+        <h3>Monthly maintenance</h3>
+        <p>Fresh posts, review replies, and hour/holiday updates every month, so the listing doesn't go stale again in six months.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="rates">
+  <div class="wrap">
+    <div class="section-eyebrow">Rate Card</div>
+    <h2>Flat pricing. Cancel the monthly plan any time.</h2>
+    <div class="rate-card">
+      <div class="rate-row">
+        <div class="rate-label">
+          <h4>Listing Overhaul</h4>
+          <p>One-time rebuild of your full Google Business Profile. Delivered in 5–7 days.</p>
+        </div>
+        <div class="rate-price">$249<span>one-time</span></div>
+      </div>
+      <div class="rate-row">
+        <div class="rate-label">
+          <h4>Keep It Updated</h4>
+          <p>Monthly posts, review replies, and photo refreshes. Billed monthly, cancel any time.</p>
+        </div>
+        <div class="rate-price">$79<span>/ month</span></div>
+      </div>
+      <div class="rate-row">
+        <div class="rate-label">
+          <h4>Overhaul + First Month</h4>
+          <p>Bundle the rebuild with your first month of upkeep.</p>
+        </div>
+        <div class="rate-price">$299<span>+ $79/mo after</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-eyebrow">Who This Is For</div>
+    <h2>Built for owner-operators, not franchises.</h2>
+    <div class="who-list">
+      <div class="who-chip">Plumbers</div>
+      <div class="who-chip">HVAC</div>
+      <div class="who-chip">Landscapers</div>
+      <div class="who-chip">Electricians</div>
+      <div class="who-chip">Cleaning Services</div>
+      <div class="who-chip">Salons &amp; Barbers</div>
+      <div class="who-chip">Auto Detailers</div>
+      <div class="who-chip">Personal Trainers</div>
+      <div class="who-chip">Tutors</div>
+      <div class="who-chip">Tattoo Studios</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="contact-box">
+      <div class="section-eyebrow" style="color:var(--signal)">Book a Free Listing Check</div>
+      <h2>Tell us about your business.</h2>
+      <p class="lede">Fill this out and it opens a pre-filled email — no listing account access needed to get started.</p>
+      <form id="leadForm">
+        <div>
+          <label for="name">Your Name</label>
+          <input type="text" id="name" required>
+        </div>
+        <div>
+          <label for="biz">Business Name</label>
+          <input type="text" id="biz" required>
+        </div>
+        <div>
+          <label for="phone">Phone or Email</label>
+          <input type="text" id="phone" required>
+        </div>
+        <div>
+          <label for="notes">Anything we should know?</label>
+          <textarea id="notes"></textarea>
+        </div>
+        <button type="submit" class="btn btn-solid">Send Request</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Corner Listing Co. — Cincinnati, OH · Family-operated
+</footer>
+
+<script>
+  document.getElementById('leadForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const biz = document.getElementById('biz').value;
+    const phone = document.getElementById('phone').value;
+    const notes = document.getElementById('notes').value;
+    const subject = encodeURIComponent('Free Listing Check — ' + biz);
+    const body = encodeURIComponent(
+      'Name: ' + name + '\n' +
+      'Business: ' + biz + '\n' +
+      'Contact: ' + phone + '\n' +
+      'Notes: ' + notes
+    );
+    window.location.href = 'mailto:jude.4eman@gmail.com?subject=' + subject + '&body=' + body;
+  });
+</script>
+
+</body>
+</html>
